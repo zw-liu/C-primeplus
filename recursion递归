@@ -12,7 +12,7 @@ int main()
 {
 	outFile.open("recursion.txt");
   //为什么要在main函数中将outFile与文件recursion.txt联系起来呢？？
-  //为什么不可以像定义outFile一样放在main函数之外呢？？ 答：
+  //为什么不可以像定义outFile一样放在main函数之外呢？？ 答：我不清楚，等待询问别人，若你知道为什么，请联系我。我会给予你报酬，谢谢。
   //为什么不能放在recursion函数中呢？ 答：因为open函数使用一次，就会将文件中之前的内容丢弃。若放在recursion函数中，则会重复调用open函数，保存在文件中的数据会被丢弃掉！！！
 	recursion(Number);
   outFile.close();
