@@ -1,1 +1,29 @@
+#include<iostream>
+#include<fstream>//导入头文件
+using namespace std;
+void recursion(int);
 
+ofstream outFile;
+//为什么要在这里声明ofstream对象呢？
+//因为在recursion（int）函数中，将使用outFile对象。
+//现在在这个位置定义的是全局变量，若在main函数中定义，则这个outFile只可以在main函数中使用，这时候recursion函数中的outFile就不可以使用!!!
+int Number = 4;
+int main()
+{
+	outFile.open("recursion.txt");
+  //为什么要在main函数中将outFile与文件recursion.txt联系起来呢？？
+  //为什么不可以像定义outFile一样放在main函数之外呢？？ 答：
+  //为什么不能放在recursion函数中呢？ 答：因为open函数使用一次，就会将文件中之前的内容丢弃。若放在recursion函数中，则会重复调用open函数，保存在文件中的数据会被丢弃掉！！！
+	recursion(Number);
+  outFile.close();
+  //关闭文件！
+	system("pause");
+	return 0;
+}
+void recursion(int i)
+{
+
+	outFile << "recursion " << i << '\n';
+	if (i>0)recursion(i - 1);
+	outFile << "finish the recrsion " << i << endl;
+}
